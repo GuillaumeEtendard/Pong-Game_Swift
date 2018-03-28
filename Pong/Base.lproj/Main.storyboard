@@ -32,10 +32,18 @@
                                     <action selector="vsComputer:" destination="kLp-u2-Gx9" eventType="touchUpInside" id="fzx-IR-dZ0"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PONG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo2-3X-pRp">
+                                <rect key="frame" x="123.5" y="40" width="129" height="60"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.80000000000000004" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Yo2-3X-pRp" firstAttribute="centerX" secondItem="1ri-x0-JUW" secondAttribute="centerX" id="2L5-j0-Oza"/>
                             <constraint firstItem="HGC-WO-ZrJ" firstAttribute="centerX" secondItem="1ri-x0-JUW" secondAttribute="centerX" id="QKA-yg-m0c"/>
+                            <constraint firstItem="Yo2-3X-pRp" firstAttribute="top" secondItem="yIc-ZF-4hK" secondAttribute="top" constant="20" id="RQE-B4-7JN"/>
                             <constraint firstItem="33u-Bz-N33" firstAttribute="leading" secondItem="yIc-ZF-4hK" secondAttribute="leading" constant="100" id="WVF-du-Ux9"/>
                             <constraint firstItem="HGC-WO-ZrJ" firstAttribute="centerY" secondItem="1ri-x0-JUW" secondAttribute="centerY" id="XNb-ex-7Xz"/>
                             <constraint firstItem="yIc-ZF-4hK" firstAttribute="trailing" secondItem="33u-Bz-N33" secondAttribute="trailing" constant="100" id="h7x-oC-u1l"/>

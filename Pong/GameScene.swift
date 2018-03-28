@@ -124,8 +124,17 @@ class GameScene: SKScene {
     }
     
     @objc func ballEffect(){
-        self.labels["gameStatusLabel"]?.text = "The ball is fastest"
-        self.elements["ball"]?.physicsBody?.mass = 0.02
+        let rand = Int(arc4random_uniform(2))
+        if(rand == 0){
+            self.labels["gameStatusLabel"]?.text = "The ball is fastest"
+            self.elements["ball"]?.physicsBody?.mass = 0.02
+            return
+        }else{
+            self.labels["gameStatusLabel"]?.text = "The ball is growing"
+            self.elements["ball"]?.size.width = 120
+            self.elements["ball"]?.size.height = 120
+            return
+        }
     }
     
     func resetBall(){
@@ -134,6 +143,8 @@ class GameScene: SKScene {
         elements["ball"]?.physicsBody?.mass = 0.0500000081956387
         elements["ball"]?.run(SKAction.moveTo(x: 0, duration: 0))
         elements["ball"]?.run(SKAction.moveTo(y: 0, duration: 0))
+        self.elements["ball"]?.size.width = 40
+        self.elements["ball"]?.size.height = 40
     }
     
     func applyImpulseBall(){
