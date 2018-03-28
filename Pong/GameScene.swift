@@ -31,7 +31,6 @@ class GameScene: SKScene {
         elements["playerBottom"] = self.childNode(withName: "playerBottom") as? SKSpriteNode
  
         elements["ball"] = self.childNode(withName: "ball") as? SKSpriteNode
-        print("did move")
         
         labels["gameStatusLabel"] = self.childNode(withName: "gameStatusLabel") as? SKLabelNode
         
@@ -43,14 +42,16 @@ class GameScene: SKScene {
         frameBody.restitution = 1
         
         self.physicsBody = frameBody
+        
+        Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(self.ballEffect), userInfo: nil, repeats: true)
     }
     
     @objc func updateTimer() {
         seconds -= 1
-        labels["gameStatusLabel"]?.text = "\(self.seconds)"
+        self.labels["gameStatusLabel"]?.text = "\(self.seconds)"
         if(seconds == 0){
             gameTimer.invalidate()
-            labels["gameStatusLabel"]?.text = ""
+            self.labels["gameStatusLabel"]?.text = ""
             self.applyImpulseBall()
         }
     }
@@ -105,7 +106,7 @@ class GameScene: SKScene {
             
             self.resetBall()
             
-            setTimeout(3, block: { () -> Void in
+            _ = setTimeout(3, block: { () -> Void in
                 self.applyImpulseBall()
             })
         }
@@ -116,14 +117,21 @@ class GameScene: SKScene {
             
             self.resetBall()
             
-            setTimeout(3, block: { () -> Void in
+            _ = setTimeout(3, block: { () -> Void in
                 self.applyImpulseBall()
             })
         }
     }
     
+    @objc func ballEffect(){
+        self.labels["gameStatusLabel"]?.text = "The ball is fastest"
+        self.elements["ball"]?.physicsBody?.mass = 0.02
+    }
+    
     func resetBall(){
+        labels["gameStatusLabel"]?.text = ""
         elements["ball"]?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        elements["ball"]?.physicsBody?.mass = 0.0500000081956387
         elements["ball"]?.run(SKAction.moveTo(x: 0, duration: 0))
         elements["ball"]?.run(SKAction.moveTo(y: 0, duration: 0))
     }
@@ -132,21 +140,6 @@ class GameScene: SKScene {
         let rand = Int(arc4random_uniform(2))
         let rand2 = Int(arc4random_uniform(2))
         
-        var xPos = 30
-        var yPos = 30
-        if(rand == 0){
-            xPos = 30
-        }else{
-            xPos = -30
-        }
-        if(rand2 == 0){
-            yPos = 30
-        }else{
-            yPos = -30
-        }
-        
-        print(xPos)
-        print(yPos)
-        elements["ball"]?.physicsBody?.applyImpulse(CGVector(dx: xPos, dy: yPos))
+        elements["ball"]?.physicsBody?.applyImpulse(CGVector(dx: rand == 0 ? 30 : -30, dy: rand2 == 0 ? 30 : -30))
     }
 }

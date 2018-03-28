@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController : UIViewController{
     @IBAction func vsComputer(_ sender: UIButton) {
-        let alert = UIAlertController(title: "My Alert", message: "My awesome message", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Choose Difficulty", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Easy", style: .default, handler: { action in
             print(action)
             self.performSegue(withIdentifier: "game", sender: Double(0.7))
